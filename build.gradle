@@ -1,0 +1,26 @@
+group 'com.automationpractice.tests'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.5
+
+
+
+repositories {
+    mavenCentral()
+}
+
+
+
+dependencies {
+
+    compile 'info.cukes:cucumber-junit:1.1.5'
+    compile 'info.cukes:cucumber-java:1.1.5'
+    compile 'info.cukes:cucumber-core:1.1.5'
+    compile 'info.cukes:gherkin:2.12.2'
+    compile 'org.seleniumhq.selenium:selenium-firefox-driver:2.53.1'
+    compile 'org.seleniumhq.selenium:selenium-server:2.53.1'
+    compile 'org.seleniumhq.selenium:selenium-java:2.53.1'
+    testCompile group: 'junit', name: 'junit', version:"${junitVersion}"
+}

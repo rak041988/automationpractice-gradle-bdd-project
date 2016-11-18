@@ -1,1 +1,5 @@
+ cucumber-html-reports
 .idea
+.gradle
+build
+
