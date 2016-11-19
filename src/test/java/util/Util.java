@@ -1,14 +1,20 @@
 package util;
 
 import config.DriverSetup;
+import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Properties;
+import java.util.logging.Logger;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -19,7 +25,145 @@ import static org.junit.Assert.assertTrue;
 public class Util {
 
     static DriverSetup driver = new DriverSetup();
-    public static String url = "http://automationpractice.com/";
+    public static String url = getProperty("url");
+    public static String configFile = CurrentDirectory() + "\\config.properties";
+    public static String configProperty;
+
+    /**
+     * Displays the Log Information
+     *
+     * @param LogString
+     * @return Log
+     * @throws Exception
+     */
+    public static Logger Log(String LogString) throws Exception {
+        PropertyConfigurator.configure("log4j.properties");
+        final Logger Log = Logger.getLogger("Log:");
+        Log.info(LogString);
+        return Log;
+    }
+
+    /**
+     * Gets the property file     *
+     * @param Property
+     * @return configProperty
+     */
+    public static String getProperty(String Property) {
+        if (System.getProperty(Property) == null ) {
+            configProperty = ReadPropertiesFile(Property);
+        } else {
+            configProperty = SetPropertiesFile(getConfigFile(), Property, System.getProperty(Property).toLowerCase());
+        }
+        return configProperty;
+    }
+
+    /**
+     * gets the current directory
+     *
+     * @return CurDir
+     */
+    public static String CurrentDirectory() {
+        String CurDir = System.getProperty("user.dir");
+        return CurDir;
+    }
+
+    public static String getConfigFile() {
+        return configFile;
+    }
+
+    /**
+     * Read's properties file
+     *
+     * @param
+     * @param key
+     * @return getProperty
+     */
+    public static String ReadPropertiesFile(String key) {
+        Properties prop = new Properties();
+        InputStream is = null;
+        try {
+            is = new FileInputStream(CurrentDirectory() + "\\config.properties");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            prop.load(is);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return prop.getProperty(key);
+    }
+
+    /**
+     * Sets the properties File
+     *
+     * @param fileName
+     * @param key
+     * @param value
+     * @return getProperty
+     */
+    public static String SetPropertiesFile(String fileName, String key, String value) {
+        Properties prop = new Properties();
+        InputStream is = null;
+        try {
+            is = new FileInputStream(fileName);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            prop.load(is);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        prop.setProperty(key, value);
+        return prop.getProperty(key);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * To open the URL of the App

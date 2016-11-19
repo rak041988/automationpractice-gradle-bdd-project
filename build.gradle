@@ -23,4 +23,6 @@ dependencies {
     compile 'org.seleniumhq.selenium:selenium-server:2.53.1'
     compile 'org.seleniumhq.selenium:selenium-java:2.53.1'
     testCompile group: 'junit', name: 'junit', version:"${junitVersion}"
+    compile 'log4j:log4j:1.2.17'
+    compile 'org.apache.commons:commons-lang3:3.4'
 }
