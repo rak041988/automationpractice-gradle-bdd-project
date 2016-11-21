@@ -26,7 +26,7 @@ public class Util {
 
     static DriverSetup driver = new DriverSetup();
     public static String url = getProperty("url");
-    public static String configFile = CurrentDirectory() + "\\config.properties";
+    public static String configFile = CurrentDirectory() + "/config.properties";
     public static String configProperty;
 
     /**
@@ -82,7 +82,7 @@ public class Util {
         Properties prop = new Properties();
         InputStream is = null;
         try {
-            is = new FileInputStream(CurrentDirectory() + "\\config.properties");
+            is = new FileInputStream(CurrentDirectory() + "/config.properties");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
