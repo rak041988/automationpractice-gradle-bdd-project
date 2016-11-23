@@ -24,7 +24,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class Util {
 
-    static DriverSetup driver = new DriverSetup();
+    public static DriverSetup driver = new DriverSetup();
     public static String url = getProperty("url");
     public static String configFile = CurrentDirectory() + "/config.properties";
     public static String configProperty;
