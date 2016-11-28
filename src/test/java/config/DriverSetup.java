@@ -25,7 +25,9 @@ public class DriverSetup extends EventFiringWebDriver {
 
     public static  WebDriver driver(){
         System.out.println("running on browser::::::::::::::::::::"+browser);
+
         if (browser.equals("firefox")) {
+
 //            System.out.println("************Tests are running on browser :"+getProperty("browser")+"*************");
 //            System.out.println("************Operating system is : "+System.getProperty("os.name")+"*************");
             if (System.getProperty("os.name").contains("Linux")){
@@ -36,28 +38,32 @@ public class DriverSetup extends EventFiringWebDriver {
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setPlatform(Platform.ANY);
             capabilities.setBrowserName(browser);
+
             return new FirefoxDriver();
+
         } else if (browser.equals("ie")) {
+
 //            System.out.println("************Tests are running on browser :"+getProperty("browser")+"*************");
 //            System.out.println("************Operating system is : "+System.getProperty("os.name")+"*************");
             System.setProperty("webdriver.ie.driver", System.getProperty("user.dir") +"//tools//IEDriver//InternetExplorerDriver.exe");
+
             return new InternetExplorerDriver();
+
         } else if (browser.equals("chrome")) {
+
           //  System.out.println("************Tests are running on browser :"+getProperty("browser")+"*************");
            // System.out.println("************Operating system is : "+System.getProperty("os.name")+"*************");
             if (System.getProperty("os.name").contains("Linux")){
                 System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") +"//tools//chrome//chromedriver");
-                DesiredCapabilities capabilities = new DesiredCapabilities();
-                capabilities.setPlatform(Platform.ANY);
-                capabilities.setBrowserName(browser);
-                return new ChromeDriver();
+
             }else {
                 System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") +"//tools//chrome//chromedriver.exe");
-                DesiredCapabilities capabilities = new DesiredCapabilities();
-                capabilities.setPlatform(Platform.ANY);
-                capabilities.setBrowserName(browser);
-                return new ChromeDriver();
+
             }
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setPlatform(Platform.ANY);
+            capabilities.setBrowserName(browser);
+            return new ChromeDriver();
         }
 
         return driver();
