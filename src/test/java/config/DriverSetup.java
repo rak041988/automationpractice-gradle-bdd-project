@@ -31,9 +31,9 @@ public class DriverSetup extends EventFiringWebDriver {
 //            System.out.println("************Tests are running on browser :"+getProperty("browser")+"*************");
 //            System.out.println("************Operating system is : "+System.getProperty("os.name")+"*************");
             if (System.getProperty("os.name").contains("Linux")){
-                System.setProperty("webdriver.firefox.marionette",System.getProperty("user.dir") + "//tools//gecko/geckodriver");
+                System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir") + "//tools//gecko/geckodriver");
             }else {
-                System.setProperty("webdriver.firefox.marionette",System.getProperty("user.dir") + "//tools//gecko/geckodriver.exe");
+                System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir") + "//tools//gecko/geckodriver.exe");
             }
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setPlatform(Platform.ANY);
