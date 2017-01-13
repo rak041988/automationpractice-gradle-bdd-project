@@ -2,4 +2,7 @@
 .idea
 .gradle
 build
-
+*.xml
+.iml
+.metadata/
+RemoteSystemsTempFiles/
