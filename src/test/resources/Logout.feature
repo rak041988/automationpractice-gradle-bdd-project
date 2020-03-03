@@ -1,5 +1,6 @@
 Feature: User should logout succesfully
 
+  @test
   Scenario:
 
     Given I navigate to automationpractise

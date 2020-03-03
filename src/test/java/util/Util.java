@@ -22,9 +22,8 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by babu on 09/07/2016.
  */
-public class Util {
+public class Util extends DriverSetup {
 
-    public static DriverSetup driver = new DriverSetup();
     public static String url = getProperty("url");
     public static String configFile = CurrentDirectory() + "/config.properties";
     public static String configProperty;
